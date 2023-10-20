@@ -8,6 +8,9 @@ import { members } from "$schema";
 export class AddUser {
   @On()
   async messageCreate([message]: ArgsOf<"messageCreate">, client: Client) {
+
+    console.log(message.content);
+
     const User = {
       username: `${message.author.username}`,
       id: BigInt(message.author.id),

@@ -1,11 +1,14 @@
 import chalk from "chalk";
-import { drizzle } from "drizzle-orm/postgres-js";
-import { migrate } from "drizzle-orm/postgres-js/migrator";
-import postgres from 'postgres';
+import { drizzle } from "drizzle-orm/node-postgres";
+import { migrate } from "drizzle-orm/node-postgres/migrator";
+import { Client } from 'pg';
 
-const connection = postgres(process.env.DATABASE_URL!, { max: 1 });
+const connection = new Client({connectionString: process.env.DATABASE_URL!});
+
+await connection.connect();
 
 const db = drizzle(connection);
+
 await migrate(db, { migrationsFolder: "drizzle" });
 
 console.info(chalk.bold("Migrated"));
