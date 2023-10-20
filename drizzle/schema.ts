@@ -1,13 +1,8 @@
-import {
-  pgTable,
-  pgEnum,
-  serial,
-  text,
-  varchar,
-  bigint,
-} from "drizzle-orm/pg-core";
-
+import { pgTable, pgEnum, varchar, bigint, integer } from "drizzle-orm/pg-core";
 import { sql } from "drizzle-orm";
+
+//the drizzle-generated code
+
 export const keyStatus = pgEnum("key_status", [
   "expired",
   "invalid",
@@ -35,10 +30,12 @@ export const codeChallengeMethod = pgEnum("code_challenge_method", [
   "s256",
 ]);
 
-// user
+// user table
 
-export const users = pgTable("members", {
+export const members = pgTable("members", {
   id: bigint("id", { mode: "bigint" }).primaryKey(),
   username: varchar("username", { length: 255 }),
+  exp: integer("exp"),
+  level: integer("level"),
 });
 
