@@ -4,13 +4,10 @@
   "private": true,
   "license": "MIT",
   "type": "module",
-  "main": "build/main.js",
+  "main": "./src/main.ts",
   "scripts": {
-    "build": "tsc",
-    "build:changelog": "npx @discordx/changelog --src src",
-    "dev": "ts-node-esm src/main.ts",
-    "start": "node build/main.js",
-    "watch": "nodemon --exec ts-node-esm src/main.ts"
+    "start": "bun run ./src/main.ts",
+    "watch": "bun run --watch ./src/main.ts"
   },
   "dependencies": {
     "@discordx/importer": "^1.2.3",
@@ -21,9 +18,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.5.9",
-    "nodemon": "^3.0.1",
     "prettier": "^3.0.3",
-    "ts-node": "^10.9.1",
     "typescript": "5.2.2"
   },
   "engines": {
