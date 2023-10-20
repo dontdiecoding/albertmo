@@ -1,0 +1,92 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "id": "b11fc7bd-73a9-4b29-bb97-7295e4edb19d",
+  "prevId": "00000000-0000-0000-0000-000000000000",
+  "tables": {
+    "members": {
+      "name": "members",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "bigint",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "username": {
+          "name": "username",
+          "type": "varchar(255)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {
+    "aal_level": {
+      "name": "aal_level",
+      "values": {
+        "aal3": "aal3",
+        "aal2": "aal2",
+        "aal1": "aal1"
+      }
+    },
+    "code_challenge_method": {
+      "name": "code_challenge_method",
+      "values": {
+        "plain": "plain",
+        "s256": "s256"
+      }
+    },
+    "factor_status": {
+      "name": "factor_status",
+      "values": {
+        "verified": "verified",
+        "unverified": "unverified"
+      }
+    },
+    "factor_type": {
+      "name": "factor_type",
+      "values": {
+        "webauthn": "webauthn",
+        "totp": "totp"
+      }
+    },
+    "key_status": {
+      "name": "key_status",
+      "values": {
+        "expired": "expired",
+        "invalid": "invalid",
+        "valid": "valid",
+        "default": "default"
+      }
+    },
+    "key_type": {
+      "name": "key_type",
+      "values": {
+        "stream_xchacha20": "stream_xchacha20",
+        "secretstream": "secretstream",
+        "secretbox": "secretbox",
+        "kdf": "kdf",
+        "generichash": "generichash",
+        "shorthash": "shorthash",
+        "auth": "auth",
+        "hmacsha256": "hmacsha256",
+        "hmacsha512": "hmacsha512",
+        "aead-det": "aead-det",
+        "aead-ietf": "aead-ietf"
+      }
+    }
+  },
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {}
+  }
+}

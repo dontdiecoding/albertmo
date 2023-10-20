@@ -2,9 +2,9 @@ import type { ArgsOf, Client } from "discordx";
 import { Discord, On } from "discordx";
 
 @Discord()
-export class Example {
+export class AddUser {
   @On()
-  messageDelete([message]: ArgsOf<"messageDelete">, client: Client): void {
-    console.log("Message Deleted", client.user?.username, message.content);
+  messageCreate([message]: ArgsOf<"messageCreate">, client: Client): void {
   }
 }
+
