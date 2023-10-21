@@ -8,17 +8,16 @@ import { members } from "$schema";
 export class AddUser {
   @On()
   async messageCreate([message]: ArgsOf<"messageCreate">, client: Client) {
-
     const User = {
       username: `${message.author.username}`,
       id: BigInt(message.author.id),
     };
-
+    
     await db.insert(members)
       .values({ id: User.id, username: User.username, exp: 0, level: 0 })
       .onConflictDoUpdate({
         target: members.id,
-        set: { username: User.username },
+        set: User,
       });
   }
 }

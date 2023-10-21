@@ -1,10 +1,11 @@
-import { ApplicationCommandOptionType, ChatInputCommandInteraction, Embed, GuildMember, User } from "discord.js";
+import { ApplicationCommandOptionType, ChatInputCommandInteraction, GuildMember, PermissionsBitField } from "discord.js";
 import { Discord, Slash, SlashOption } from "discordx";
+import { renderError, renderSuccess } from '../utils/embeds'
 import ms from 'ms'
 
 @Discord()
 export class Mute {
-  @Slash({ name: 'mute', description: 'Mute a user' })
+  @Slash({ name: 'mute', description: 'Mute a user', defaultMemberPermissions: PermissionsBitField.Flags.MuteMembers })
   async mute(
     @SlashOption({
       description: "Target user",
@@ -30,7 +31,13 @@ export class Mute {
     await user.timeout(milli, reason)
       .then(() => {
         return interaction.reply({
-          content: "Muted successfully",
+          embeds: [renderSuccess(`\`${user.displayName}\` has been successfully muted.`)],
+          ephemeral: true,
+        })
+      })
+      .catch((_) => {
+        return interaction.reply({
+          embeds: [renderError(`${user.displayName} cannot be muted.`)],
           ephemeral: true,
         })
       })
