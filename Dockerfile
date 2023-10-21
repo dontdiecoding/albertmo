@@ -1,8 +1,13 @@
 FROM oven/bun:latest
 
-COPY package.json ./
-COPY bun.lockb ./
-COPY src ./
+RUN mkdir -p /usr/src/bot
+WORKDIR /usr/src/bot
+
+COPY package.json /usr/src/bot
+COPY tsconfig.json /usr/src/bot
 
 RUN bun install
-RUN bun watch
+
+COPY . /usr/src/bot
+
+CMD ["bun", "watch"]
