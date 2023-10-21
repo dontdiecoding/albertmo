@@ -10,4 +10,4 @@ RUN bun install
 
 COPY . /usr/src/bot
 
-CMD ["bun", "watch"]
+CMD ["bun", "start"]
