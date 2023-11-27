@@ -3,7 +3,8 @@ import { PermissionsBitField, EmbedBuilder } from "discord.js";
 import WelcomeUserType from "../utils/user";
 
 @Discord()
-class Welcome {
+
+export class Welcome {
     @On({ event: "guildMemberAdd" })
     async welcome([member] : ArgsOf<"guildMemberAdd">, defaultPermissions: PermissionsBitField) {
 
