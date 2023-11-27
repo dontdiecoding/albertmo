@@ -1,4 +1,4 @@
-import { Discord, On, ArgsOf } from "discordx";
+import { Discord, On, type ArgsOf } from "discordx";
 import { db } from "../utils/db";
 import { members } from "$schema";
 
