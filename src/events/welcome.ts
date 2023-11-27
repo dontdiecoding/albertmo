@@ -1,4 +1,4 @@
-import { Discord, On, ArgsOf } from "discordx";
+import { Discord, On, type ArgsOf } from "discordx";
 import { PermissionsBitField, EmbedBuilder } from "discord.js";
 import WelcomeUserType from "../utils/user";
 
