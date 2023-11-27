@@ -1,13 +1,11 @@
-import { User } from "discord.js";
-import type { ArgsOf, Client } from "discordx";
-import { Discord, On } from "discordx";
+import { Discord, On, ArgsOf } from "discordx";
 import { db } from "../utils/db";
 import { members } from "$schema";
 
 @Discord()
 export class AddUser {
   @On()
-  async messageCreate([message]: ArgsOf<"messageCreate">, client: Client) {
+  async messageCreate([message]: ArgsOf<"messageCreate">) {
     const User = {
       username: `${message.author.username}`,
       id: BigInt(message.author.id),
