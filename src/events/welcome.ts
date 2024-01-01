@@ -1,5 +1,7 @@
 import { Discord, On, type ArgsOf } from "discordx";
 import { PermissionsBitField, EmbedBuilder } from "discord.js";
+import { db } from "../utils/db";
+import { members } from "$schema";
 
 @Discord()
 
@@ -18,5 +20,19 @@ export class Welcome {
         if (welcomeChannel?.isTextBased()) {
             await welcomeChannel.send({ embeds: [embed] });
         }
+    }
+
+    async dbadd([member] : ArgsOf<"guildMemberAdd">) {
+        const User = {
+            username: `${member.user.username}`,
+            id: BigInt(member.user.id),
+        };
+
+        await db.insert(members)
+            .values({ id: User.id, username: User.username, exp: 0, level: 0 })
+            .onConflictDoUpdate({
+                target: members.id,
+                set: User,
+            });
     }
 }
