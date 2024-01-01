@@ -14,6 +14,7 @@ export class Welcome {
             .setDescription(`Welcome to Hobbyist Hangout, <@${member.user.id}>`)
             .setImage(member.user.avatarURL())
             .setFooter({text: `You are the ${member.guild.memberCount}th member!`})
+            .setColor('Red')
 
         const welcomeChannel = member.guild.channels.cache.find(ch => ch.name === 'door');
 
